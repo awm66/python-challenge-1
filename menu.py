@@ -53,6 +53,19 @@ menu = {
 # 1. Set up order list. Order list will store a list of dictionaries for
 # menu item name, item price, and quantity ordered
 
+order_list = [
+  {
+    "Item name": str,
+    "Price": float,
+    "Quantity": int
+  },
+  {
+    "Item name": str,
+    "Price": float,
+    "Quantity": int
+  },
+]
+
 
 # Launch the store and present a greeting to the customer
 print("Welcome to the variety food truck.")
@@ -117,24 +130,40 @@ while place_order:
                         "Price": value
                     }
                     i += 1
+                    
             # 2. Ask customer to input menu item number
 
+            menu_item_selection = input('Enter a menu item to purchase: ')
 
             # 3. Check if the customer typed a number
 
-                # Convert the menu selection to an integer
+            if menu_item_selection.isnumeric():
+                int(menu_item_selection)
+            else:
+                menu_item_selection = input('Enter a menu item to purchase: ')
 
-
+                # Convert the menu selection to an integer (see code above for int conversion)
+            
                 # 4. Check if the menu selection is in the menu items
 
-                    # Store the item name as a variable
+            if menu_item_selection in menu_items:
+                valid_menu_item_selection = menu_item_selection
+            else:
+                menu_item_selection = input('Enter a valid menu item to purchase: ')
 
+                    # Store the item name as a variable (see code above for variable storage
 
                     # Ask the customer for the quantity of the menu item
 
+            menu_item_selection_quantity = input('Enter a quantity to purchase: ')
 
                     # Check if the quantity is a number, default to 1 if not
 
+            if menu_item_selection_quantity.isnumeric():
+                int(menu_item_selection_quantity)
+            else:
+                menu_item_selection_quantity = 1
+                int(menu_item_selection_quantity)
 
                     # Add the item name, price, and quantity to the order list
 
