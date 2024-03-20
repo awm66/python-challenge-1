@@ -66,7 +66,6 @@ order_list = [
   },
 ]
 
-
 # Launch the store and present a greeting to the customer
 print("Welcome to the variety food truck.")
 
@@ -138,40 +137,45 @@ while place_order:
             # 3. Check if the customer typed a number
 
             if menu_item_selection.isnumeric():
-                int(menu_item_selection)
-            else:
-                menu_item_selection = input('Enter a menu item to purchase: ')
 
-                # Convert the menu selection to an integer (see code above for int conversion)
-            
+                # Convert the menu selection to an integer
+                menu_item_selection_int = int(menu_item_selection)
+                
                 # 4. Check if the menu selection is in the menu items
 
-            if menu_item_selection in menu_items:
-                valid_menu_item_selection = menu_item_selection
-            else:
-                menu_item_selection = input('Enter a valid menu item to purchase: ')
-
-                    # Store the item name as a variable (see code above for variable storage
+                if menu_item_selection_int in menu_items:
+            
+                    # Store the item name as a variable
+                    valid_menu_item_selection = menu_item_selection_int
 
                     # Ask the customer for the quantity of the menu item
 
-            menu_item_selection_quantity = input('Enter a quantity to purchase: ')
+                    menu_item_selection_quantity = input('Enter a quantity to purchase: ')
 
                     # Check if the quantity is a number, default to 1 if not
 
-            if menu_item_selection_quantity.isnumeric():
-                int(menu_item_selection_quantity)
-            else:
-                menu_item_selection_quantity = 1
-                int(menu_item_selection_quantity)
+                    if menu_item_selection_quantity.isnumeric():
+                    
+                        # Convert the quantity to an integer
+                        int(menu_item_selection_quantity)
+               
+                    else:
+                        menu_item_selection_quantity = 1
+                        
+                        # Convert the default quantity to an integer
+                        int(menu_item_selection_quantity)
 
                     # Add the item name, price, and quantity to the order list
+                    order_list.append([valid_menu_item_selection, value, menu_item_selection_quantity])
+                    print(order_list)
 
-
+                else:
                     # Tell the customer that their input isn't valid
-
-
+                    menu_item_selection = input('Enter a valid menu item to purchase: ')
+            
+            else:
                 # Tell the customer they didn't select a menu option
+                menu_item_selection = input('Enter a valid menu item to purchase: ')
 
         else:
             # Tell the customer they didn't select a menu option
@@ -185,20 +189,27 @@ while place_order:
         keep_ordering = input("Would you like to keep ordering? (Y)es or (N)o ")
 
         # 5. Check the customer's input
-
-                # Keep ordering
-
-                # Exit the keep ordering question loop
-
-                # Complete the order
-
-                # Since the customer decided to stop ordering, thank them for
-                # their order
-
-                # Exit the keep ordering question loop
-
-
-                # Tell the customer to try again
+        # Keep ordering
+        if keep_ordering.upper() == 'Y': break
+        print('Awesome!')
+            #break
+        
+        if keep_ordering.upper() == 'N':
+        
+            # Exit the keep ordering question loop
+            
+            # Since the customer decided to stop ordering, thank them for
+            # their order
+            print('Thank you for your order!')
+            
+            # Complete the order
+            
+        #else:
+            # Tell the customer to try again
+        print('Enter (Y)es or (N)o ')
+            
+        #break
+    #break
 
 
 # Print out the customer's order
