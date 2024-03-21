@@ -183,34 +183,26 @@ while place_order:
     else:
         # Tell the customer they didn't select a number
         print("You didn't select a number.")
-
-    #while True:
-        # Ask the customer if they would like to order anything else
-    keep_ordering = input("Would you like to keep ordering? (Y)es or (N)o ")
-        # 5. Check the customer's input
-        # Keep ordering
-    if keep_ordering.upper() == 'Y':
-        print('Awesome!')
-            
-    elif keep_ordering.upper() == 'N':
-            # Since the customer decided to stop ordering, thank them for
-            # their order
-        print('Thank you for your order!')
-            
-            # Exit the keep ordering question loop
+        
+    # Ask the customer if they would like to order anything else
+    keep_ordering = str.upper('')
+    # while false loop with check for non-standard input
+    while (keep_ordering not in ('Y', 'N')):
+        keep_ordering = str.upper(input('Would you like to keep ordering? (Y)es or (N)o '))
+        
+    # 5. Check the customer's input
+    # Keep ordering
+    if keep_ordering == 'Y':
+            print('\nAwesome! Let\'s order more! \n')
+    # Stop ordering
+    elif keep_ordering == 'N':
+        # Since the customer decided to stop ordering, thank them for
+        # their order
+        print('\nYou made great choices! Thank you for your order! \n')
+        # Exit the keep ordering question loop
         break
             
-            # Since the customer decided to stop ordering, thank them for
-            # their order
-            # print('Thank you for your order!')
-            
             # Complete the order
-            
-    else:
-            # Tell the customer to try again
-        print('Try again. Enter (Y)es or (N)o ')
-
-
 
 # Print out the customer's order
 print("This is what we are preparing for you.\n")
