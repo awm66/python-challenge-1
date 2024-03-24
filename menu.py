@@ -199,8 +199,8 @@ place_order = False
 print("This is what we are preparing for you.\n")
 
 # Uncomment the following line to check the structure of the order
-print("Item name                 | Price  | Quantity")
-print("--------------------------|--------|----------")
+#print("Item name                 | Price  | Quantity")
+#print("--------------------------|--------|----------")
 
 # 6. Loop through the items in the customer's order
 #for key, value in order_list():
@@ -215,12 +215,23 @@ for item in order_list:
     total_cost += item_total
 
     # 8. Calculate the number of spaces for formatted printing
+    item_name_length = len(item_name)
 
     # 9. Create space strings
+    if item_name_length > len("Item Name"):
+        print("Item Name" + " " * (item_name_length - len("item_name")), "| Price  | Quantity")
+        print("-" * (item_name_length+1) + "|--------|----------")
     
+    else:
+        print("Item Name" + "| Price  | Quantity")
+        print("-" * (len("Item Name")) + "|--------|----------")
     
     # 10. Print the item name, price, and quantity
-    print(f"{item_name:<26}| ${price:>5.2f} | {quantity:>8}")
+    if item_name_length > len("Item Name"):
+        print(f"{item_name} | ${price:>5.2f} | {quantity:>8}")
+        
+    else:
+        print(f"{item_name:<8} | ${price:>5.2f} | {quantity:>8}")
 
 # 11. Calculate the cost of the order using list comprehension
 # Multiply the price by quantity for each item in the order list, then sum()
