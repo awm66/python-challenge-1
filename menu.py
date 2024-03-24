@@ -119,29 +119,24 @@ while place_order:
                     i += 1
                     
             # 2. Ask customer to input menu item number
-
             menu_item_selection = input('Enter a menu item to purchase: ')
 
             # 3. Check if the customer typed a number
-
             if menu_item_selection.isnumeric():
 
                 # Convert the menu selection to an integer
                 menu_item_selection_int = int(menu_item_selection)
                 
                 # 4. Check if the menu selection is in the menu items
-
                 if menu_item_selection_int in menu_items:
             
                     # Store the item name as a variable
                     valid_menu_item_selection = menu_items[menu_item_selection_int]
 
                     # Ask the customer for the quantity of the menu item
-
                     menu_item_selection_quantity = input('Enter a quantity to purchase: ')
 
                     # Check if the quantity is a number, default to 1 if not
-
                     if menu_item_selection_quantity.isnumeric():
                     
                         # Convert the quantity to an integer
@@ -202,9 +197,11 @@ print("This is what we are preparing for you.\n")
 #print("Item name                 | Price  | Quantity")
 #print("--------------------------|--------|----------")
 
+# Define and set total cost to zero
+total_cost = 0
+
 # 6. Loop through the items in the customer's order
 #for key, value in order_list():
-total_cost = 0
 for item in order_list:
 
     # 7. Store the dictionary items as variables
@@ -218,6 +215,7 @@ for item in order_list:
     item_name_length = len(item_name)
 
     # 9. Create space strings
+    # Conditional for names shorter than the header name
     if item_name_length > len("Item Name"):
         print("Item Name" + " " * (item_name_length - len("item_name")), "| Price  | Quantity")
         print("-" * (item_name_length+1) + "|--------|----------")
@@ -227,6 +225,7 @@ for item in order_list:
         print("-" * (len("Item Name")) + "|--------|----------")
     
     # 10. Print the item name, price, and quantity
+    # Conditional for names shorter than the header name
     if item_name_length > len("Item Name"):
         print(f"{item_name} | ${price:>5.2f} | {quantity:>8}")
         
