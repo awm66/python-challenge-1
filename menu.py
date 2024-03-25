@@ -173,7 +173,7 @@ while place_order:
     
     # while false loop with check for non-standard input
     while (keep_ordering not in ('Y', 'N')):
-        keep_ordering = str.upper(input('Would you like to keep ordering? (Y)es or (N)o '))
+        keep_ordering = str.upper(input('\nWould you like to keep ordering? (Y)es or (N)o '))
         
     # 5. Check the customer's input
     # Keep ordering
@@ -197,43 +197,45 @@ print("This is what we are preparing for you.\n")
 #print("Item name                 | Price  | Quantity")
 #print("--------------------------|--------|----------")
 
-# Define and set total cost to zero
-total_cost = 0
-
 # 6. Loop through the items in the customer's order
 #for key, value in order_list():
+# Define and set total cost to zero
+total_cost = 0
+item_name_length_list = []
+max_lenth = 26
+min_length = 9
+
 for item in order_list:
 
     # 7. Store the dictionary items as variables
     item_name = item["Item name"]
     price = item["Price"]
     quantity = item["Quantity"]
-    item_total = price * quantity
-    total_cost += item_total
 
     # 8. Calculate the number of spaces for formatted printing
+    item_name_length_list.append(len(item_name))
     item_name_length = len(item_name)
+    max_length = max(item_name_length_list)
+    min_length = len("Item Name")
 
-    # 9. Create space strings
-    # Conditional for names shorter than the header name
-    if item_name_length > len("Item Name"):
-        print("Item Name" + " " * (item_name_length - len("item_name")), "| Price  | Quantity")
-        print("-" * (item_name_length+1) + "|--------|----------")
+# 9. Create space strings
+# Conditional for variable header length
+if max_length > min_length:
+    order_receipt_name = (f"{item['Item name']} + " " * (item_name_length - min_length)")
+    print("Item Name" + " " * (item_name_length - min_length), "| Price  | Quantity")
+    print("-" * (max_length+1) + "|--------|----------")
+   
+else:
+    order_receipt_name = (f"{item['Item name']} + " " * (item_name_length - min_length)")
+    print("Item Name" + " " * (item_name_length - min_length), "| Price  | Quantity")
+    print("-" * (min_length+1) + "|--------|----------")
     
-    else:
-        print("Item Name" + "| Price  | Quantity")
-        print("-" * (len("Item Name")) + "|--------|----------")
-    
-    # 10. Print the item name, price, and quantity
-    # Conditional for names shorter than the header name
-    if item_name_length > len("Item Name"):
-        print(f"{item_name} | ${price:>5.2f} | {quantity:>8}")
-        
-    else:
-        print(f"{item_name:<8} | ${price:>5.2f} | {quantity:>8}")
+# 10. Print the item name, price, and quantity
+for item in order_list:
+    print(f"{item['Item name']:<9} | ${item['Price']:<5.2f} | {item['Quantity']:<8}")
 
 # 11. Calculate the cost of the order using list comprehension
 # Multiply the price by quantity for each item in the order list, then sum()
 # and print the prices.
-total_cost = sum((price * quantity) for item in order_list)
+total_cost = sum(item["Price"] * item["Quantity"] for item in order_list)
 print(f"\nTotal Cost: ${total_cost:.2f}\n")
