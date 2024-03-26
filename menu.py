@@ -55,7 +55,7 @@ menu = {
 order_list = []
 
 # Launch the store and present a greeting to the customer
-print("Welcome to the variety food truck.")
+print("\nWelcome to the variety food truck.\n")
 
 # Customers may want to order multiple items, so let's create a continuous
 # loop
@@ -79,7 +79,7 @@ while place_order:
         i += 1
 
     # Get the customer's input
-    menu_category = input("Type menu number: ")
+    menu_category = input("\nType menu number: ")
 
     # Check if the customer's input is a number
     if menu_category.isdigit():
@@ -91,7 +91,7 @@ while place_order:
             print(f"You selected {menu_category_name}")
 
             # Print out the menu options from the menu_category_name
-            print(f"What {menu_category_name} item would you like to order?")
+            print(f"\nWhat {menu_category_name} item would you like to order?\n")
             i = 1
             menu_items = {}
             print("Item # | Item name                | Price")
@@ -119,7 +119,7 @@ while place_order:
                     i += 1
                     
             # 2. Ask customer to input menu item number
-            menu_item_selection = input('Enter a menu item to purchase: ')
+            menu_item_selection = input('\nEnter a menu item to purchase: ')
 
             # 3. Check if the customer typed a number
             if menu_item_selection.isnumeric():
@@ -134,7 +134,7 @@ while place_order:
                     valid_menu_item_selection = menu_items[menu_item_selection_int]
 
                     # Ask the customer for the quantity of the menu item
-                    menu_item_selection_quantity = input('Enter a quantity to purchase: ')
+                    menu_item_selection_quantity = input('\nEnter a quantity to purchase: ')
 
                     # Check if the quantity is a number, default to 1 if not
                     if menu_item_selection_quantity.isnumeric():
@@ -177,15 +177,18 @@ while place_order:
         
     # 5. Check the customer's input
     # Keep ordering
-    if keep_ordering == 'Y':
+    match keep_ordering:
+        case 'Y':
             print('\nAwesome! Let\'s order more! \n')
+            
     # Stop ordering
-    elif keep_ordering == 'N':
+        case 'N':
         # Since the customer decided to stop ordering, thank them for
         # their order
-        print('\nYou made great choices! Thank you for your order! \n')
-        # Exit the keep ordering question loop
-        break
+            print('\nYou made great choices! Thank you for your order! \n')
+            
+            # Exit the keep ordering question loop
+            break
             
 # Complete the order
 place_order = False
@@ -202,7 +205,7 @@ print("This is what we are preparing for you.\n")
 # Define and set total cost to zero
 total_cost = 0
 item_name_length_list = []
-max_lenth = 26
+max_length = 26
 min_length = 9
 
 for item in order_list:
@@ -215,25 +218,30 @@ for item in order_list:
     # 8. Calculate the number of spaces for formatted printing
     item_name_length_list.append(len(item_name))
     item_name_length = len(item_name)
-    max_length = max(item_name_length_list)
-    min_length = len("Item Name")
+    break
+
+# Find max and min lengths for item names
+#print(order_list)
+max_length = max(item_name_length_list)
+min_length = len("Item Name")
+print(max_length)
+print(min_length)
 
 # 9. Create space strings
 # Conditional for variable header length
-if max_length > min_length:
-    order_receipt_name = (f"{item['Item name']} + " " * (item_name_length - min_length)")
+#if max_length > min_length:
+if max_length > 9:
     print("Item Name" + " " * (item_name_length - min_length), "| Price  | Quantity")
     print("-" * (max_length+1) + "|--------|----------")
    
 else:
-    order_receipt_name = (f"{item['Item name']} + " " * (item_name_length - min_length)")
     print("Item Name" + " " * (item_name_length - min_length), "| Price  | Quantity")
     print("-" * (min_length+1) + "|--------|----------")
     
 # 10. Print the item name, price, and quantity
 for item in order_list:
     print(f"{item['Item name']:<9} | ${item['Price']:<5.2f} | {item['Quantity']:<8}")
-
+    
 # 11. Calculate the cost of the order using list comprehension
 # Multiply the price by quantity for each item in the order list, then sum()
 # and print the prices.
