@@ -1,5 +1,7 @@
 # python-challenge-1
-Week 2 Challenge
+Week 2 
+
+No specific code was copied but the sources below were referenced. 
 
 # Sources:
 
