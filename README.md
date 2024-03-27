@@ -1,7 +1,7 @@
 # python-challenge-1
 Week 2 
 
-No specific code was copied but the sources below were referenced. 
+No specific code was copied but the sources below were referenced for examples and syntax. 
 
 # Sources:
 
