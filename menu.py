@@ -224,8 +224,6 @@ for item in order_list:
 #print(order_list)
 max_length = max(item_name_length_list)
 min_length = len("Item Name")
-print(max_length)
-print(min_length)
 
 # 9. Create space strings
 # Conditional for variable header length
